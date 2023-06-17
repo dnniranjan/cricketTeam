@@ -60,11 +60,11 @@ app.get("/players/:playerId/", async (request, response) => {
   const getPlayerQuery = `SELECT * FROM cricket_team WHERE player_id=${playerId}`;
   const playerArray = await db.get(getPlayerQuery);
   //console.log(playerArray);
-  response.send(playerArray);
-  //   //.map((eachItem) => {
-  //       return convertDbobjectToResponseObject(eachItem);
-  //     })
-  //   );
+  response.send(
+    playerArray.map((eachItem) => {
+      return convertDbobjectToResponseObject(eachItem);
+    })
+  );
 });
 
 //update player
